@@ -10,11 +10,11 @@ public class PizzaArrayList {
 		ArrayList<String> ingredients = new ArrayList();
 		
 		String choice = "choice";
-		while(!choice.equals("done")){
+		while(!choice.toLowerCase().equals("done")){
 			System.out.print("Write ingredients to add to your pizza OR write \"done\" to checkout your order :");
 			choice = input.next();
 			
-			if(!choice.equals("done"))
+			if(!choice.toLowerCase().equals("done"))
 				ingredients.add(choice);
 			else
 				break;
