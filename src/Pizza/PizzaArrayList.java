@@ -11,7 +11,7 @@ public class PizzaArrayList {
 		
 		String choice = "choice";
 		while(!choice.toLowerCase().equals("done")){
-			System.out.print("Write ingredients to add to your pizza OR write \"done\" to checkout your order :");
+			System.out.print("Write ingredients it to add to your pizza OR write \"done\" to checkout your order :");
 			choice = input.next();
 			
 			if(!choice.toLowerCase().equals("done"))
@@ -20,14 +20,49 @@ public class PizzaArrayList {
 				break;
 		}//end while loop
 		
-		System.out.println("This your ingredients to your pizza " + ingredients);
+		System.out.println("\t\tType y or n to confirm");
+		System.out.println("\t\tingredients of pizza " + ingredients);
+		System.out.print("\t\tright? ");
+		char answere = input.next().charAt(0);
+		
+		boolean isAgree = isAgree(answere);
+		
+		if(isAgree) {
+			System.out.println("Have a nice day, your pizza will finish soon");
+		}else {
+			System.out.println("Sorry for that");
+			while(isAgree == false) {
+				choice = "choice";
+				ingredients.clear();
+				while(!choice.toLowerCase().equals("done")){
+					System.out.print("Write ingredients it to add to your pizza OR write \"done\" to checkout your order :");
+					choice = input.next();
+					
+					if(!choice.toLowerCase().equals("done"))
+						ingredients.add(choice);
+					else
+						break;
+				}//end while loop
+				
+				System.out.println("\t\tType y or n to confirm");
+				System.out.println("\t\tingredients of pizza " + ingredients);
+				System.out.print("\t\tright? ");
+				answere = input.next().charAt(0);
+				
+				isAgree = isAgree(answere);
+				
+				if(isAgree) 
+					System.out.println("Have a nice day, your pizza will finish soon");
+			}
+			
+		}
 		
 		
 	}//end of main method
 	
 	public static boolean isAgree(char choice) {
 		
-		if(choice == 'y')
+		if(choice == 'y' || choice == 'Y')
 			return true;
 		
 		return false;
